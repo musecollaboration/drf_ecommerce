@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Send JS request</h1>
+    <button onclick="getData()">Click me</button>
+    <div id="output"></div>
+    <script>
+      function getData() {
+        fetch("http://127.0.0.1:8000/shop/categories/")
+          .then((resp) => resp.json())
+          .then((data) => {
+            document.getElementById("output").innerText = JSON.stringify(
+              data,
+              null,
+              2
+            );
+          })
+          .catch((error) => {
+            document.getElementById("output").innerText = "Ошибка: " + error;
+          });
+      }
+    </script>
+  </body>
+</html>
